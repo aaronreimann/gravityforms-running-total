@@ -26,9 +26,20 @@ class GFRT_Shortcodes {
 			$total += $single_amount;
 
 		}
-		$dollar_amount = '$'.$total;
+		$cs = $this->currency_symbol();
+
+		$formatted_number = number_format_i18n( $total, 2 );
+
+		$dollar_amount = $cs.$formatted_number;
 
 		return $dollar_amount;
+	}
+
+	function currency_symbol() {
+		setlocale(LC_MONETARY, get_locale());
+		$local_currency = localeconv();
+		$cs = $local_currency[currency_symbol];
+		return $cs;
 	}
 }
 

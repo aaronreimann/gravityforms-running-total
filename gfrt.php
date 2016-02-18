@@ -32,7 +32,7 @@ class GFRT_Plugin {
 	 */
 	public static function load() {
 
-		require_once( __DIR__ . '/gftfa-shortcodes.php' );
+		require_once( __DIR__ . '/gfrt-shortcodes.php' );
 
 		register_activation_hook( __FILE__, array( __CLASS__, '_wp_activation' ) );
 		register_deactivation_hook( __FILE__, array( __CLASS__, '_wp_deactivation' ) );
