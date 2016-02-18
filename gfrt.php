@@ -2,7 +2,7 @@
 /*
 Plugin Name: Gravity Forms Running Total
 Plugin URI: http://thewpway.com
-Description:
+Description: A plugin for Gravity Forms to generate a running total of a form on a specific field.
 Version: 1.0.0
 Author: areimann
 Author URI: http://thewpway.com
@@ -40,8 +40,6 @@ class GFRT_Plugin {
 	}
 
 	public static function _wp_activation() {
-		//KYE_CPT::register_post_types();
-
 		flush_rewrite_rules();
 	}
 
