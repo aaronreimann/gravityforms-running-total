@@ -24,29 +24,31 @@ Copyright 2016 Aaron Reimann aaron.reimann@gmail.com
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+if ( ! class_exists( 'GFRT_Plugin' ) ) {
 
-class GFRT_Plugin {
+	class GFRT_Plugin {
 
-	/**
-	 * Initializes the plugin
-	 */
-	public static function load() {
+		/**
+		 * Initializes the plugin
+		 */
+		public static function load() {
 
-		require_once( __DIR__ . '/gfrt-shortcodes.php' );
+			require_once( __DIR__ . '/gfrt-shortcodes.php' );
 
-		register_activation_hook( __FILE__, array( __CLASS__, '_wp_activation' ) );
-		register_deactivation_hook( __FILE__, array( __CLASS__, '_wp_deactivation' ) );
+			register_activation_hook( __FILE__, array( __CLASS__, '_wp_activation' ) );
+			register_deactivation_hook( __FILE__, array( __CLASS__, '_wp_deactivation' ) );
 
-	}
+		}
 
-	public static function _wp_activation() {
-		flush_rewrite_rules();
-	}
+		public static function _wp_activation() {
+			flush_rewrite_rules();
+		}
 
-	public static function _wp_deactivation() {
-		flush_rewrite_rules();
+		public static function _wp_deactivation() {
+			flush_rewrite_rules();
+		}
+
 	}
 
 }
-
 GFRT_Plugin::load();
