@@ -17,19 +17,26 @@ class GFRT_Shortcodes {
 		$total = 0;
 
 		// From Chris Hajer April 15, 2014 to return more than 30 entries (the default)
+		// Grabs all of the entries based on the $form_id
 		$entries = RGFormsModel::get_leads( $form_id, 0, 'ASC', '', 0, 999, null, null, false, null, null, 'active', false );
 
+		// loops through each form and grabs the "field" ID number based on what is submitted to the shortcode
 		foreach ( $entries as $entry ) {
 
+			// strips the $
 			$single_amount = str_replace('$', '', $entry[$atts[field]]);
 
+			// adds each value to to the total
 			$total += $single_amount;
 
 		}
+		// grabs the currency symbol from WP
 		$cs = $this->currency_symbol();
 
+		// i18n'ing the number
 		$formatted_number = number_format_i18n( $total, 2 );
 
+		// appends currency symbol
 		$dollar_amount = $cs.$formatted_number;
 
 		return $dollar_amount;
